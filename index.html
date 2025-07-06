@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><style>
+body{font-family:sans-serif;text-align:center;padding:1em;background:#fdf6ff}
+input,button{padding:.5em;border-radius:5px;margin:.5em}
+.name{margin:.3em;padding:.5em;background:#fff;border:1px solid #ccc;border-radius:8px}
+</style></head><body>
+<h2>Name Generator</h2>
+<input id="traits" placeholder="Traits (e.g. gentle, wild)">
+<button onclick="g()">Generate</button><div id="r"></div>
+<script>
+t1=["Ael","Thae","Zel","Lira"];t2=["ther","liss","vyn","nae"];t3=["wyn","thorn","shade","vale"];
+v={gentle:["Luna","Anya","Lyra"],strong:["Kaela","Zara"],wild:["Thorne","Wynra"]};
+function g(){let i=document.getElementById("traits").value.toLowerCase().split(","),r=new Set();
+while(r.size<10){let b="",j=i[Math.random()*i.length|0].trim();if(v[j])b=v[j][Math.random()*v[j].length|0];
+if(!b)b=t1[Math.random()*t1.length|0]+t2[Math.random()*t2.length|0];
+let m=t2[Math.random()*t2.length|0],l=t3[Math.random()*t3.length|0];
+r.add(b+" "+m[0].toUpperCase()+m.slice(1)+" "+l[0].toUpperCase()+l.slice(1));}
+r=[...r].map(n=>`<div class="name">${n}</div>`).join("");document.getElementById("r").innerHTML=r;}
+</script></body></html>
